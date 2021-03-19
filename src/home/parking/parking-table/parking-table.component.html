@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table id="parkedCarDetails" class="table table-bordered" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Car No</th>
+        <th class="center">Color</th>
+        <th class="center">Slot No.</th>
+        <th class="center">Date-Time </th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let data of tableValue;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{data.carNumber}}</td>
+        <td class="center">{{data.color}}</td>
+        <td class="center">{{data.slotNo}}</td>
+        <td class="center">{{data.date | date:'medium'}}</td>
+        <td class="center"><button type="button" class="btn btn-warning" (click)="removeCar(data)">Remove</button>
+        </td>
+      </tr>
+      <p class="center m-2" *ngIf="tableValue.length < 1">No cars found </p>
+  </table>
+</div>

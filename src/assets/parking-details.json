@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "carNumber": "KA-64-YX-0619",
+      "color": "Red",
+      "slotNo": "3",
+      "date": "2021-03-18T17:13:57.804Z"
+    },
+    {
+      "carNumber": "KA-62-AO-1533",
+      "color": "White",
+      "slotNo": "4",
+      "date": "2021-03-18T17:13:57.804Z"
+    },
+    {
+      "carNumber": "KA-89-KI-5375",
+      "color": "Blue",
+      "slotNo": "5",
+      "date": "2021-03-18T17:13:57.804Z"
+    },
+    {
+      "carNumber": "KA-02-BG-9076",
+      "color": "Blue",
+      "slotNo": "1",
+      "date": "2021-03-18T17:13:57.804Z"
+    },
+    {
+      "carNumber": "KA-34-CD-2676",
+      "color": "Black",
+      "slotNo": "2",
+      "date": "2021-03-18T17:13:57.804Z"
+    }
+  ]
+}

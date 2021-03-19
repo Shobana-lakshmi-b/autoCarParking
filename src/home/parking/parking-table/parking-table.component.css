@@ -1,0 +1,15 @@
+thead {
+  background-color: #505459;
+  border-color: #505459;
+  color: white;
+}
+
+td.center,th.center,tr.center {
+  text-align: center;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border:1px solid lightgrey
+}
+

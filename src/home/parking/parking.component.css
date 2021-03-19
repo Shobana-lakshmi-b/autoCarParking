@@ -1,0 +1,23 @@
+.header {
+  margin: 0px;
+  background-color: #368f8b;
+  color:white;
+  position: sticky;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  padding:15px;
+  font-size:x-large;
+}
+
+.amount {
+  position: absolute;
+  font-size: large;
+  right:15px;
+}
+
+.dropdown-toggle{
+  border: 1px solid lightgrey;
+}

@@ -1,0 +1,70 @@
+<nav class="header">
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="title">Automated Parking Lot System</div>
+    <div class="amount">Total Amount Rs.{{amountCollected}} </div>
+  </div>
+</nav>
+
+<div style="text-align: center;" *ngIf="lastOperation != '' && selectedCar" [ngClass]="['alert', 'alert-dismissible' ,'fade','show' ,lastOperation == 'ADD' ? 'alert-success':'alert-warning']" role="alert">
+  <ng-container *ngIf="lastOperation == 'ADD';then addMsgBlock;else removeMsgBlock"></ng-container>
+  <button type="button" class="close" (click)="closeAlert()" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+</div>
+
+<div class="container-fluid">
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="col-12">
+        <label>Total Parking Slots- <span class="text-danger ml-1">{{totalParkingSlots}}</span></label>
+      </div>
+      <div class="col-12">
+        <label>Available Parking Slots-<span class="text-danger ml-1">{{availableSlots}}</span></label>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row align-items-center justify-content-md-end">
+        <div class="mr-2 mb-2" *ngIf="availableSlots > 0">
+          <input type="text" class="form-control" style="text-transform: uppercase;" placeholder="KA-00-AZ-0000" [(ngModel)]="newCarRegNo">
+        </div>
+        <div class="mr-2 mb-2" *ngIf="availableSlots > 0">
+          <input type="text" class="form-control" style="text-transform: capitalize;" placeholder="Enter color" [(ngModel)]="newCarColor">
+        </div>
+        <button type="button" class="btn btn-danger mr-2" [disabled]="availableSlots < 1" (click)="addNewCar()">{{availableSlots>0 ? 'Park a car':'Parking Full'}} </button>
+        <button type="button" class="btn btn-success mr-2" (click)="query()">Query Data</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-end mt-4">
+    <div class="mr-2 mb-2">
+      <input type="text" class="form-control" placeholder="TYPE REG NO." [(ngModel)]="selectedRegNo">
+    </div>
+    <div class="dropdown mr-2">
+      <button class="btn dropdown-toggle" (click)="updateColorOptions()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{selectedColor}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" *ngFor="let color of parkedCarColors" (click)="updateColor(color)">{{color}}</a>
+      </div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-info mr-2" (click)="filterCars()">Search</button>
+      <button type="button" class="btn btn-secondary mr-2" (click)="resetFilterSearch()">Reset</button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <app-parking-table [parkedCars]="parkedCars" (removeSelected)="removeCar($event)"></app-parking-table>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #removeMsgBlock>
+  <strong>Slot {{selectedCar.slotNo}} occupied by {{selectedCar.carNumber}} has been freed !!!</strong> Collected Rs.20
+</ng-template>
+
+<ng-template #addMsgBlock>
+  Successfully parked the car <strong>{{selectedCar.carNumber}}</strong> in slot <strong>{{selectedCar.slotNo}}</strong> !!
+</ng-template>
